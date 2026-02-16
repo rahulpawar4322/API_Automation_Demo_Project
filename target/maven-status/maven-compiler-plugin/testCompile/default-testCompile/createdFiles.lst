@@ -1,0 +1,6 @@
+base\BaseTest.class
+pojo\UserRequest.class
+config\ConfigReader.class
+runners\TestRunner.class
+constants\EndPoints.class
+stepdefinitions\UserSteps.class
