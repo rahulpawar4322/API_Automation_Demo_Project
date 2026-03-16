@@ -29,9 +29,9 @@ public class Hooks {
     @After
     public void afterScenario(Scenario scenario) {
         if (scenario.isFailed()) {
-            ExtentTestManager.getTest().fail("Scenario Failed ❌");
+            ExtentTestManager.getTest().fail("Scenario Failed");
         } else {
-            ExtentTestManager.getTest().pass("Scenario Passed ✅");
+            ExtentTestManager.getTest().pass("Scenario Passed");
         }
     }
 
