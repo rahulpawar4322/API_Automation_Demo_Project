@@ -4,6 +4,7 @@ import base.BaseTest;
 import constants.EndPoints;
 import io.cucumber.java.en.*;
 import io.restassured.filter.Filter;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import pojo.UserRequest;
@@ -39,7 +40,9 @@ public class UserSteps extends BaseTest {
         response = requestSpec().log().all()
         		.filter(new ExtentRestAssuredFilter())
                 .body(user).when()
-                .post(EndPoints.USERS).then().log().all().extract().response();
+                .post(EndPoints.USERS).then().log().all()
+                .body(matchesJsonSchemaInClasspath("Schema/userSchemaResponseValidator.json"))
+                .extract().response();
                 
         userId = response.jsonPath().getInt("id");
         
